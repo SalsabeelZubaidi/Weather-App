@@ -23,4 +23,16 @@ body {
   background: #0F1417;
   color:#ededed ;
   font-family: var(--space-grotesk), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Ensure no horizontal scrolling */
+html {
+  overflow-x: hidden;
+}
+
+/* Make images responsive */
+img {
+  max-width: 100%;
+  height: auto;
 }
