@@ -1,10 +1,10 @@
 import ForecastRow from "./ForecastRow"
 
-export default function ForecastTable() {
+export default function ForecastTable({cityData}) {
     
 return <>
     <div className="flex flex-col">
-        <h3 className="mt-8 sm:mt-12 lg:mt-15 mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold">5-Day Foreacst</h3>
+        <h3 className="mt-8 sm:mt-12 lg:mt-15 mb-4 sm:mb-6 text-2xl sm:text-3xl font-bold">5-Day Forecast</h3>
     
         <div className="px-0 sm:px-2">
             <div className="w-full">
@@ -24,10 +24,10 @@ return <>
                             </td>
                         </tr>
                     </thead>
-                    <ForecastRow />  
+                    <ForecastRow rowData={cityData} />  
                 </table>
             </div>
         </div>
     </div>
     </>
-    }
+}

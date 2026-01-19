@@ -1,0 +1,47 @@
+[
+    
+{
+    "city":"Amman",
+    "country":"Jordan",
+    "weatherSummary": "Mostly clear with a high of 75F",
+    "icon": "/images/sun.png",
+    "humidityValue": "60%",
+    "windValue": "5mph",
+    "feelsValue": " 72F",
+    "day": "Monday",
+    "tempHigh":"78",
+    "tempLow":"65",
+    "condition":"Partly Cloudy",
+    "tableIcon":"/images/sun.png"
+},
+{
+    "city":"Cairo",
+    "country":"Egypt",
+    "weatherSummary": "Mostly clear with a high of 75F",
+    "icon": "/images/cloudy.png",
+    "humidityValue": "30%",
+    "windValue": "5mph",
+    "feelsValue": " 20F",
+    "day": "Monday",
+    "tempHigh":"30",
+    "tempLow":"15",
+    "condition":"Cloudy",
+    "tableIcon":"/images/cloudy.png"
+},
+{
+    "city":"Abu Dhabi",
+    "country":"United Arab Emirates",
+    "weatherSummary": "Mostly clear with a high of 90F",
+    "icon": "/images/clear.png",
+    "humidityValue": "70%",
+    "windValue": "5mph",
+    "feelsValue": " 80F",
+    "day": "Monday",
+    "tempHigh":"80",
+    "tempLow":"60",
+    "condition":"Clear",
+    "tableIcon":"/images/clear.png"
+}
+
+
+]
