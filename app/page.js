@@ -6,8 +6,8 @@ import ForecastTable from "./components/ForecastTable";
 export default function Home() {
   return (<>
       {/* Header */}
-      <div className="pt-6 sm:pt-8 lg:pt-10 px-4 sm:px-5 pb-4 sm:pb-5">
-        <div className="flex justify-between items-center">
+      <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-5 pb-4 sm:pb-5">
+        <div className="mx-auto max-w-6xl w-full flex flex-wrap justify-between items-center gap-3">
           <img src="/images/weatherAppLogo.png" alt="Waether App" className="w-[120px] sm:w-[144px] h-auto"/>
           <div className="flex items-center">
             <h4 className="font-bold mr-3 sm:mr-5 text-[16px] sm:text-[18px]">°C</h4>
@@ -21,7 +21,7 @@ export default function Home() {
         <hr className="opacity-50 w-full" />
 
       {/* body container */}  
-      <div className="pt-6 sm:pt-8 lg:pt-10 px-4 sm:px-6 md:px-8 lg:px-30 pb-12 sm:pb-16 lg:pb-20 flex flex-col gap-4 sm:gap-6">
+      <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-6 md:px-8 lg:px-2 pb-12 sm:pb-16 lg:pb-20 flex flex-col gap-4 sm:gap-6 mx-auto max-w-6xl w-full">
 
         {/* Search bar */}
         <SearchBar />
