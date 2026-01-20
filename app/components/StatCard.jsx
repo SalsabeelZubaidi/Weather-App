@@ -31,7 +31,7 @@ export default function StatCard({cityData}){
             {/* forecast summary */}
         <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-8 sm:pb-12 gap-4 sm:gap-10">
             <img src={cityData.icon} className="w-12 h-12 sm:w-auto sm:h-auto"/>
-            <span className="text-lg sm:text-xl md:text-[24px] text-center"> {cityData.weatherSummary}</span>
+            <span className="text-lg sm:text-xl md:text-[24px] text-center"> {cityData.weatherSummary } {cityData.weatherSummarydegree} <span>°F</span> </span>
         </div>
 
         {/* stats cards */}

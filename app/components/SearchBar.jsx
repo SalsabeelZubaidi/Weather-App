@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import jsonData from '../JsonFiles/weatherTest.json'
@@ -7,7 +7,11 @@ import jsonData from '../JsonFiles/weatherTest.json'
 export default function SearchBar({onCitySelect}){
     const json= jsonData;
     const [query, setQuery] = useState("");
-    const[result, setResult] = useState(null);
+    const [result, setResult] = useState(json[0]); ///input from user // search bar input
+
+    useEffect(() => {
+        onCitySelect(result);
+    }, []); ///to make amman the deafult value when the user first opens the page
 
     const searchData = () =>{
         const found= json.find(
@@ -17,7 +21,7 @@ export default function SearchBar({onCitySelect}){
         );
         onCitySelect(found);
     }
-
+    
     return <div 
         className="flex items-center bg-[#26303B] rounded-2xl h-[60px] sm:h-[72px] px-4 sm:px-8 w-full">
             <button 

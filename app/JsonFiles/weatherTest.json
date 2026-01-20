@@ -1,46 +1,149 @@
-[
-    
+[ 
 {
     "city":"Amman",
     "country":"Jordan",
-    "weatherSummary": "Mostly clear with a high of 75F",
+    "weatherSummary": "Mostly clear with a high of ",
+    "weatherSummarydegree": 75,
     "icon": "/images/sun.png",
     "humidityValue": "60%",
     "windValue": "5mph",
-    "feelsValue": " 72F",
-    "day": "Monday",
-    "tempHigh":"78",
-    "tempLow":"65",
-    "condition":"Partly Cloudy",
-    "tableIcon":"/images/sun.png"
+    "feelsValue": 72,
+    "forecast": {
+        "sun": {
+            "dayName":"Sunday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "mon": {
+            "dayName": "Monday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "tues": {
+            "dayName": "Thursday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "wed": {
+            "dayName": "Wednesday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "thurs": {
+            "dayName": "Thursday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        }
+        
+    }
+    
+    
 },
 {
     "city":"Cairo",
     "country":"Egypt",
-    "weatherSummary": "Mostly clear with a high of 75F",
+    "weatherSummary": "Mostly clear with a high of",
+    "weatherSummary":80,
     "icon": "/images/cloudy.png",
     "humidityValue": "30%",
     "windValue": "5mph",
-    "feelsValue": " 20F",
-    "day": "Monday",
-    "tempHigh":"30",
-    "tempLow":"15",
-    "condition":"Cloudy",
-    "tableIcon":"/images/cloudy.png"
+    "feelsValue": 20,
+    "forecast": {
+        "sun": {
+            "dayName":"Sunday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "mon": {
+            "dayName": "Monday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "tues": {
+            "dayName": "Thursday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "wed": {
+            "dayName": "Wednesday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "thurs": {
+            "dayName": "Thursday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        }
+        
+    }
 },
 {
     "city":"Abu Dhabi",
     "country":"United Arab Emirates",
-    "weatherSummary": "Mostly clear with a high of 90F",
+    "weatherSummary": "Mostly clear with a high of",
+    "weatherSummary":85,
     "icon": "/images/clear.png",
     "humidityValue": "70%",
     "windValue": "5mph",
     "feelsValue": " 80F",
-    "day": "Monday",
-    "tempHigh":"80",
-    "tempLow":"60",
-    "condition":"Clear",
-    "tableIcon":"/images/clear.png"
+   "forecast": {
+        "sun": {
+            "dayName":"Sunday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "mon": {
+            "dayName": "Monday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "tues": {
+            "dayName": "Thursday",
+            "tempHigh":78,
+            "tempLow":65,
+            "condition":"Partly Cloudy",
+            "tableIcon":"/images/sun.png"
+        },
+        "wed": {
+            "dayName": "Wednesday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        },
+        "thurs": {
+            "dayName": "Thursday",
+            "tempHigh":50,
+            "tempLow":30,
+            "condition":"Cloudy",
+            "tableIcon":"/images/cloudy.png"
+        }
+        
+    }
 }
 
 
