@@ -1,44 +1,37 @@
 "use client";
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-import jsonData from '../JsonFiles/weatherTest.json'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-export default function SearchBar({onCitySelect}){
-    const json= jsonData;
-    const [query, setQuery] = useState("");
-    const [result, setResult] = useState(json[0]); ///input from user // search bar input
+export default function SearchBar({ onCitySelect }) {
+  const [query, setQuery] = useState(""); //user input from search bar
 
-    useEffect(() => {
-        onCitySelect(result);
-    }, []); ///to make amman the deafult value when the user first opens the page
+  //Amman is diapleyed by default
+  useEffect(() => {
+    onCitySelect("Amman");
+  }, []);
 
-    const searchData = () =>{
-        const found= json.find(
-            (item) => 
-                item.city.toLowerCase() === query.toLowerCase()
-            || item.country.toLowerCase() === query.toLowerCase()
-        );
-        onCitySelect(found);
-    }
-    
-    return <div 
-        className="flex items-center bg-[#26303B] rounded-2xl h-[60px] sm:h-[72px] px-4 sm:px-8 w-full">
-            <button 
-                className='cursor-pointer'
-                onClick= {searchData}
-            >
-                <FontAwesomeIcon
-                icon={faMagnifyingGlass}
-                className="mr-3 sm:mr-5 text-[#99ABBD] text-lg sm:text-xl"
-            />
-            </button>
-            <input 
-            value={query}
-            onChange = {(e) =>setQuery(e.target.value) } 
-            className="text-[16px] sm:text-[19px] text-[#99ABBD] w-full p-3 rounded-2xl"  
-            placeholder='Search for a city'
-            />
-        </div>
+  const handleSearch = () => {
+    if (!query.trim()) return;
+    onCitySelect(query.trim());
+    setQuery("");
+  };
 
+  return (
+    <div className="flex items-center bg-[#26303B] rounded-2xl h-[60px] sm:h-[72px] px-4 sm:px-8 w-full">
+      <button className="cursor-pointer" onClick={handleSearch}>
+        <FontAwesomeIcon
+          icon={faMagnifyingGlass}
+          className="mr-3 sm:mr-5 text-[#99ABBD] text-lg sm:text-xl"
+        />
+      </button>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && handleSearch()}
+        className="text-[16px] sm:text-[19px] text-[#99ABBD] w-full p-3 rounded-2xl"
+        placeholder="Search for a city"
+      />
+    </div>
+  );
 }
