@@ -5,6 +5,8 @@ export async function fetchForecast(lat, lon) {
   if (!API_KEY) throw new Error("Weather API key not set");
 
   const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`;
+  
+    //  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly,alerts&units=metric&appid=${API_KEY}`
 
   const res = await fetch(url);
   if (!res.ok) {

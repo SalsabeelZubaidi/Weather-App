@@ -2,6 +2,9 @@
 import { useEffect, useState } from "react";
 import { fetchForecast } from "../services/weatherService";
 import { getCoordinates } from "../services/geocodingService";
+import StatCardSkeleton from "./StatCardSkeleton";
+
+
 
 
 export default function StatCard({ cityName }) {
@@ -35,7 +38,7 @@ export default function StatCard({ cityName }) {
 }, [cityName]);
 
 
-  if (loading) return <p className="text-center mt-8">Loading weather...</p>;
+  if (loading) return <StatCardSkeleton />;
   if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
   if (!weatherData) return <p>No data for this city</p>;
   
@@ -58,12 +61,13 @@ export default function StatCard({ cityName }) {
   ];
 
   return (
-    <>
-      <div className="flex justify-center pt-12 sm:pt-16 lg:pt-24 px-4">
+    <>    
+         <div className="flex justify-center pt-5 sm:pt-16 lg:pt-10 px-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-center">
           {displayName}
         </h1>
       </div>
+     
 
       <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-8 sm:pb-12 gap-4 sm:gap-10">
         <img
@@ -72,7 +76,7 @@ export default function StatCard({ cityName }) {
           alt="weather icon"
         />
         <span className="text-lg sm:text-xl md:text-[24px] text-center">
-          {weatherData.weather[0].description} {weatherData.main.temp}°C
+          {weatherData.weather[0].description} {Math.round(weatherData.main.temp)}°C
         </span>
       </div>
 

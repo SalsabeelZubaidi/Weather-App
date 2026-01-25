@@ -3,19 +3,26 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import StatCard from "./components/StatCard";
 import ForecastTable from "./components/ForecastTable";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Amman"); // default city
+  const [checked, setChecked] = useState(false)
+
+    const handleChange = () => {
+        setChecked(!checked)
+    }
 
   return (
     <>
       {/* Header */}
       <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-5 pb-4 sm:pb-5">
-        <div className="mx-auto max-w-6xl w-full flex flex-wrap justify-between items-center gap-3">
+        <div className="mx-auto  w-full flex flex-wrap justify-between pl-10 pr-10">
           <img
             src="/images/weatherAppLogo.png"
             alt="Weather App"
-            className="w-[120px] sm:w-[144px] h-auto"
+            className="w-[160px] sm:w-[184px] h-auto"
           />
           <div className="flex items-center">
             <h4 className="font-bold mr-3 sm:mr-5 text-[16px] sm:text-[18px]">°C</h4>
@@ -45,6 +52,7 @@ export default function Home() {
       <footer className="p-6 sm:p-8 lg:p-10 flex justify-center text-[16px] sm:text-lg lg:text-[20px] text-[#99ABBD] px-4">
         © 2026 Weather App. All rights reserved.
       </footer>
+    
     </>
   );
 }

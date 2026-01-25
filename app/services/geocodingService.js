@@ -20,6 +20,6 @@ export async function getCoordinates(city) {
   return {
     lat: data[0].lat,
     lon: data[0].lon,
-    display_name: data[2].display_name, //i chose [2] because its the only one that has the value of city and country only
+    display_name: data[0].display_name, //i chose [2] because its the only one that has the value of city and country only
   };
 }

@@ -1,18 +1,27 @@
 export default function ForecastRow({ day }) {
-  const date = new Date(day.dt_txt).toLocaleDateString("en-US", { weekday: "long" }); //converts its to JS date object and change the format to show it in days name
-  //now date has days value
+  // Format the date to show weekday name
+  const dayName = new Date(day.date).toLocaleDateString("en-US", {
+    weekday: "long",
+  });
 
   return (
     <tr className="border-t border-[#E5E8EB]">
-      <td className="p-4">{date}</td>
+      {/* Day Name */}
+      <td className="p-4">{dayName}</td>
+
+      {/* High / Low */}
       <td className="p-4">
-        {Math.round(day.main.temp_max)}° / {Math.round(day.main.temp_min)}°
+        {Math.round(day.maxTemp)}°C / {Math.round(day.minTemp)}°C
       </td>
-      <td className="p-4 capitalize">{day.weather[0].description}</td>
+
+      {/* Weather Description */}
+      <td className="p-4 capitalize">{day.weather.description}</td>
+
+      {/* Weather Icon */}
       <td className="p-4 hidden sm:table-cell">
         <img
-          src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-          alt="weather icon"
+          src={`https://openweathermap.org/img/wn/${day.weather.icon}@2x.png`}
+          alt={day.weather.description}
           className="w-10 h-10"
         />
       </td>
