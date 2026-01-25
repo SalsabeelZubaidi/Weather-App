@@ -1,45 +1,37 @@
+import { NextResponse } from "next/server";
+
+const API_KEY = process.env.WEATHER_API_KEY; // store your key in .env.local
+// console.log('API Key available:', API_KEY ? 'YES' : 'NO');
+
 export async function GET(request) {
-  const { searchParams } = new URL(request.url);
-  const city = searchParams.get('city');
-
-  if (!city) {
-    return new Response(JSON.stringify({ error: 'City is required' }), { status: 400 });
-  }
-
   try {
-    // First get coordinates for the city
-    const geoRes = await fetch(
-      `https://nominatim.openstreetmap.org/search?q=${city}&format=json`,
-      { headers: { 'User-Agent': 'WeatherApp/1.0' } }
-    );
-    
-    if (!geoRes.ok) {
-      return new Response(JSON.stringify({ error: 'Failed to get coordinates' }), { status: geoRes.status });
-    }
-    
-    const geoData = await geoRes.json();
-    
-    if (!geoData.length) {
-      return new Response(JSON.stringify({ error: 'City not found' }), { status: 404 });
-    }
-    
-    const { lat, lon } = {
-      lat: geoData[0].lat,
-      lon: geoData[0].lon
-    };
+    const { searchParams } = new URL(request.url);
+    const city = searchParams.get("city");
+    const days = searchParams.get("days") || 7;
 
-    // Then get weather data
-    const weatherRes = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${process.env.NEXT_PUBLIC_WEATHER_API_KEY}`
-    );
+    // console.log('API route called with city:', city, 'days:', days);
 
-    if (!weatherRes.ok) {
-      return new Response(JSON.stringify({ error: 'Weather API error' }), { status: weatherRes.status });
+    if (!city) {
+      return NextResponse.json({ error: "City is required" }, { status: 400 });
     }
 
-    const weatherData = await weatherRes.json();
-    return new Response(JSON.stringify(weatherData), { status: 200 });
+    const weatherUrl = `https://api.weatherapi.com/v1/forecast.json?key=${API_KEY}&days=${days}&q=${city}`;
+    // console.log('Calling WeatherAPI:', weatherUrl.replace(API_KEY, 'HIDDEN_KEY'));
+
+    const res = await fetch(weatherUrl);
+    console.log('WeatherAPI response status:', res.status);
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      console.error('WeatherAPI error response:', errorText);
+      throw new Error(`WeatherAPI error: ${res.status} - ${errorText}`);
+    }
+
+    const data = await res.json();
+    console.log('WeatherAPI data received successfully');
+    return NextResponse.json(data);
   } catch (err) {
-    return new Response(JSON.stringify({ error: 'Server error: ' + err.message }), { status: 500 });
+    console.error('API route error:', err);
+    return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
   }
 }

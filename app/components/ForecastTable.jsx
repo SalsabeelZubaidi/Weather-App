@@ -1,35 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
 import ForecastRow from "./ForecastRow";
-import { getCoordinates } from "../services/geocodingService";
-import { fetchForecast } from "../services/weatherService";
 import ForecastTableSkeleton from "./ForecastTableSkeleton";
-
-// Helper: normalize 3-hour forecast into daily min/max
-function getDailyForecast(forecastData) {
-  const dailyMap = {};
-
-  forecastData.forEach((item) => {
-    const date = item.dt_txt.split(" ")[0]; // YYYY-MM-DD
-
-    if (!dailyMap[date]) {
-      dailyMap[date] = {
-        date,
-        minTemp: item.main.temp,
-        maxTemp: item.main.temp,
-        weather: item.weather[0], // pick first 3h slot for simplicity
-      };
-    } else {
-      dailyMap[date].minTemp = Math.min(dailyMap[date].minTemp, item.main.temp);
-      dailyMap[date].maxTemp = Math.max(dailyMap[date].maxTemp, item.main.temp);
-    }
-  });
-
-  // convert object to sorted array
-  return Object.keys(dailyMap)
-    .sort()
-    .map((date) => dailyMap[date]);
-}
+import { fetchWeather } from "../services/weatherService";
 
 export default function ForecastTable({ cityName }) {
   const [forecastData, setForecastData] = useState([]);
@@ -42,16 +15,8 @@ export default function ForecastTable({ cityName }) {
       setError("");
 
       try {
-        // 1️⃣ Get coordinates
-        const { lat, lon } = await getCoordinates(cityName);
-
-        // 2️⃣ Fetch 3-hour forecast
-        const forecast = await fetchForecast(lat, lon);
-
-        // 3️⃣ Normalize to daily forecast with min/max
-        const dailyForecast = getDailyForecast(forecast);
-
-        setForecastData(dailyForecast);
+        const { forecast } = await fetchWeather(cityName, 5); 
+        setForecastData(forecast);
       } catch (err) {
         console.error(err);
         setError(err.message || "Unable to fetch forecast");
@@ -77,7 +42,7 @@ export default function ForecastTable({ cityName }) {
             <td className="p-4">Day</td>
             <td className="p-4">High / Low</td>
             <td className="p-4">Condition</td>
-            <td className="p-4 hidden sm:table-cell"></td>
+            <td className="p-4 hidden sm:table-cell">Icon</td>
           </tr>
         </thead>
         <tbody>

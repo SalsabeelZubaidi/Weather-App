@@ -3,16 +3,16 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import StatCard from "./components/StatCard";
 import ForecastTable from "./components/ForecastTable";
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Amman"); // default city
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
 
-    const handleChange = () => {
-        setChecked(!checked)
-    }
+  const handleChange = () => {
+    setChecked(!checked);
+  };
 
   return (
     <>
@@ -34,25 +34,21 @@ export default function Home() {
         </div>
       </div>
 
-      <hr className="opacity-50 w-full" /> 
+      <hr className="opacity-50 w-full" />
 
       {/* Body */}
       <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-6 md:px-8 lg:px-2 pb-12 sm:pb-16 lg:pb-20 flex flex-col gap-4 sm:gap-6 mx-auto max-w-6xl w-full">
-        {/* Search Bar */}
         <SearchBar onCitySelect={setSelectedCity} />
 
-        {/* Forecast Statistics */}
-        {selectedCity && <StatCard cityName={selectedCity} />}
+        {selectedCity&& <StatCard cityName={selectedCity} />}
 
-        {/* Forecast Days Table */}
-        {selectedCity && <ForecastTable cityName={selectedCity} />}
+        {selectedCity&& <ForecastTable cityName={selectedCity} />}
       </div>
 
       {/* Footer */}
       <footer className="p-6 sm:p-8 lg:p-10 flex justify-center text-[16px] sm:text-lg lg:text-[20px] text-[#99ABBD] px-4">
         © 2026 Weather App. All rights reserved.
       </footer>
-    
     </>
   );
 }
