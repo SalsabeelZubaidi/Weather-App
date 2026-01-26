@@ -8,7 +8,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 
 export default function Home() {
-  const [selectedCity, setSelectedCity] = useState("Amman"); // default city
+  const [selectedCity, setSelectedCity] = useState(""); 
   const [checked, setChecked] = useState(false);
   const [isCelsius, setIsCelsius] = useState(true);
   
@@ -46,10 +46,8 @@ export default function Home() {
       {/* Body */}
       <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-6 md:px-8 lg:px-2 pb-12 sm:pb-16 lg:pb-20 flex flex-col gap-4 sm:gap-6 mx-auto max-w-6xl w-full">
         <SearchBar onCitySelect={setSelectedCity} />
-
-        {selectedCity&& <StatCard cityName={selectedCity} isCelsius={isCelsius} />}
-
-        {selectedCity&& <ForecastTable cityName={selectedCity} isCelsius={isCelsius}/>}
+        <StatCard cityName={selectedCity} isCelsius={isCelsius} />
+        <ForecastTable cityName={selectedCity} isCelsius={isCelsius}/>
       </div>
 
       {/* Footer */}

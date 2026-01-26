@@ -2,72 +2,102 @@
 import { useEffect, useState } from "react";
 import { fetchWeather } from "../services/weatherService";
 import StatCardSkeleton from "./StatCardSkeleton";
+import Lottie from "lottie-react";
+import LandingPageAnim from '../../public/lottieAnimation/Weather.json';
 
 export default function StatCard({ cityName, isCelsius }) {
   const [weatherData, setWeatherData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const unit = isCelsius ? "°C" : "°F";
+
+  // Fetch weather when cityName changes
   useEffect(() => {
-    async function getWeather() {
-      setLoading(true);
-      setError("");
+  if (!cityName || cityName.trim() === "") return;
 
-      try {
-        const { current } = await fetchWeather(cityName, 1);
-        console.log('Weather data received:', current);
-        setWeatherData(current);
-      } catch (err) {
-        console.error(err);
-        setError("Unable to fetch weather");
-      } finally {
-        setLoading(false);
-      }
+  async function getWeather() {
+    setLoading(true);
+    setError("");
+    setWeatherData(null);
+
+    try {
+      const { current } = await fetchWeather(cityName, 1);
+      setWeatherData(current);
+    } catch (err) {
+      console.error(err);
+      setError("Unable to fetch weather");
+    } finally {
+      setLoading(false);
     }
+  }
 
-    if (cityName) getWeather();
-  }, [cityName]);
+  getWeather();
+}, [cityName]);
+
+  
+  if (!cityName || cityName.trim() === "") {
+  return (
+    <div className="relative w-full h-[450px] flex items-center justify-center mt-[-40px]">
+      <Lottie
+        animationData={LandingPageAnim}
+        loop
+        className="absolute inset-0 w-full h-full opacity-70 "
+      />
+      <p className="relative z-10 text-center font-bold text-5xl text-amber-50">
+        What’s the weather like today?
+        <br />
+        Type a city to find out!
+      </p>
+    </div>
+  );
+}
 
   if (loading) return <StatCardSkeleton />;
-  if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
-  if (!weatherData) return <p>No data for this city</p>;
-
-  const unit = isCelsius ? "°C" : "°F";
+  if (error) return (
+    <h1 className="text-center mt-40 font-bold text-5xl">
+      CITY NOT FOUND
+    </h1>
+  );
+  if (!weatherData) return (
+    <p className="text-center mt-20 font-bold text-3xl">
+      No data available for this city.
+    </p>
+  );
 
   const stats = [
     { 
       title: "Humidity", 
-      value: `${Math.round(weatherData.humidity)}%`, 
+      value: `${Math.round(weatherData?.humidity)}%`, 
       label: "cloud" 
     },
     { 
       title: "Wind", 
-      value: `${Math.round(weatherData.wind)} mph`, 
+      value: `${Math.round(weatherData?.wind)} mph`, 
       label: "wind" 
     },
     { 
       title: "Feels Like", 
-      value: `${isCelsius ? Math.round(weatherData.feels_like_C || 0) : Math.round(weatherData.feels_like_F || 0)}${unit}`, 
+      value: `${isCelsius ? Math.round(weatherData?.feels_like_C) : Math.round(weatherData?.feels_like_F)}${unit}`, 
       label: "Thermometer" 
     }
   ];
-
   return (
     <>
       <div className="flex justify-center pt-5 sm:pt-16 lg:pt-10 px-4">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-bold text-center">
-          {weatherData.location.name}, {weatherData.location.country}
+          {weatherData?.location?.name}, {weatherData?.location?.country}
         </h1>
       </div>
 
       <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-8 sm:pb-12 gap-4 sm:gap-10">
         <img
-          src={weatherData.weather.icon}
+          src={weatherData?.weather?.icon}
           className="w-12 h-12 sm:w-auto sm:h-auto"
-          alt="weather icon"
+          alt={weatherData?.weather?.description}
         />
         <span className="text-lg sm:text-xl md:text-[24px] text-center">
-          {weatherData.weather.description} with a temperature of {isCelsius? Math.round(weatherData.tempC || 0) : Math.round(weatherData.tempF || 0)}{unit}
+          {weatherData?.weather?.description} with a temperature of {isCelsius? Math.round(weatherData?.tempC) : Math.round(weatherData?.tempF)}{unit}
         </span>
       </div>
 

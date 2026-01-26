@@ -6,17 +6,17 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 export default function SearchBar({ onCitySelect }) {
   const [query, setQuery] = useState(""); //user input from search bar
 
-  //Amman is diapleyed by default
-  useEffect(() => {
-    onCitySelect("Amman");
-  }, []);
+  // Amman is diapleyed by default
+  // useEffect(() => {
+  //   onCitySelect("Amman");
+  // }, []);
 
   const handleSearch = () => {
     if (!query.trim()) return;
     onCitySelect(query.trim());
     setQuery("");
   };
-
+  
   return (
     <div className="flex items-center bg-[#26303B] rounded-2xl h-[60px] sm:h-[72px] px-4 sm:px-8 w-full">
       <button className="cursor-pointer" onClick={handleSearch}>
