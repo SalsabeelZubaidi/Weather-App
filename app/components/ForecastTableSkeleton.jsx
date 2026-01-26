@@ -1,10 +1,7 @@
 export default function ForecastTableSkeleton() {
   return (
     <div className="flex flex-col gap-4 animate-pulse">
-      {/* Title */}
       <div className="h-8 w-48 bg-gray-300 rounded mt-10 mb-4"></div>
-
-      {/* Table */}
       <div className="overflow-hidden rounded-xl border border-gray-200">
         <table className="w-full table-fixed">
           <thead className="bg-[#1C2129]">

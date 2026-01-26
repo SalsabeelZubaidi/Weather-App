@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchWeather } from "../services/weatherService";
 import StatCardSkeleton from "./StatCardSkeleton";
 
-export default function StatCard({ cityName }) {
+export default function StatCard({ cityName, isCelsius }) {
   const [weatherData, setWeatherData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -15,6 +15,7 @@ export default function StatCard({ cityName }) {
 
       try {
         const { current } = await fetchWeather(cityName, 1);
+        console.log('Weather data received:', current);
         setWeatherData(current);
       } catch (err) {
         console.error(err);
@@ -31,6 +32,8 @@ export default function StatCard({ cityName }) {
   if (error) return <p className="text-center mt-8 text-red-500">{error}</p>;
   if (!weatherData) return <p>No data for this city</p>;
 
+  const unit = isCelsius ? "°C" : "°F";
+
   const stats = [
     { 
       title: "Humidity", 
@@ -44,7 +47,7 @@ export default function StatCard({ cityName }) {
     },
     { 
       title: "Feels Like", 
-      value: `${Math.round(weatherData.feels_like)}°C`, 
+      value: `${isCelsius ? Math.round(weatherData.feels_like_C || 0) : Math.round(weatherData.feels_like_F || 0)}${unit}`, 
       label: "Thermometer" 
     }
   ];
@@ -64,7 +67,7 @@ export default function StatCard({ cityName }) {
           alt="weather icon"
         />
         <span className="text-lg sm:text-xl md:text-[24px] text-center">
-          {weatherData.weather.description} with a temperature of {Math.round(weatherData.temp)}°C
+          {weatherData.weather.description} with a temperature of {isCelsius? Math.round(weatherData.tempC || 0) : Math.round(weatherData.tempF || 0)}{unit}
         </span>
       </div>
 

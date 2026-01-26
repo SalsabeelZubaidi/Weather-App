@@ -1,18 +1,15 @@
 export default function StatCardSkeleton() {
   return (
     <div className="animate-pulse">
-      {/* City name */}
       <div className="flex justify-center pt-5 sm:pt-16 lg:pt-10 px-4">
         <div className="h-10 w-64 bg-gray-300 rounded" />
       </div>
 
-      {/* Icon + description */}
       <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-8 sm:pb-12 gap-4 sm:gap-10 mt-6">
         <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-300 rounded-full" />
         <div className="h-6 w-48 bg-gray-300 rounded" />
       </div>
 
-      {/* Stat cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-7 justify-center">
         {Array.from({ length: 3 }).map((_, i) => (
           <div

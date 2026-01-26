@@ -4,10 +4,11 @@ import ForecastRow from "./ForecastRow";
 import ForecastTableSkeleton from "./ForecastTableSkeleton";
 import { fetchWeather } from "../services/weatherService";
 
-export default function ForecastTable({ cityName }) {
+export default function ForecastTable({ cityName, isCelsius }) {
   const [forecastData, setForecastData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
 
   useEffect(() => {
     async function getData() {
@@ -42,12 +43,12 @@ export default function ForecastTable({ cityName }) {
             <td className="p-4">Day</td>
             <td className="p-4">High / Low</td>
             <td className="p-4">Condition</td>
-            <td className="p-4 hidden sm:table-cell">Icon</td>
+            <td className="p-4 hidden sm:table-cell"> </td>
           </tr>
         </thead>
         <tbody>
           {forecastData.map((day, i) => (
-            <ForecastRow key={i} day={day} />
+            <ForecastRow key={i} day={day} isCelsius={isCelsius}/>
           ))}
         </tbody>
       </table>

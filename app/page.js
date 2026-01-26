@@ -3,12 +3,15 @@ import { useState } from "react";
 import SearchBar from "./components/SearchBar";
 import StatCard from "./components/StatCard";
 import ForecastTable from "./components/ForecastTable";
-import Skeleton from "react-loading-skeleton";
+import UnitToggle from "./components/UnitToggle"
 import "react-loading-skeleton/dist/skeleton.css";
+
 
 export default function Home() {
   const [selectedCity, setSelectedCity] = useState("Amman"); // default city
   const [checked, setChecked] = useState(false);
+  const [isCelsius, setIsCelsius] = useState(true);
+  
 
   const handleChange = () => {
     setChecked(!checked);
@@ -17,15 +20,19 @@ export default function Home() {
   return (
     <>
       {/* Header */}
-      <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-5 pb-4 sm:pb-5">
-        <div className="mx-auto  w-full flex flex-wrap justify-between pl-10 pr-10">
-          <img
-            src="/images/weatherAppLogo.png"
-            alt="Weather App"
-            className="w-[160px] sm:w-[184px] h-auto"
-          />
+      <div className="sm:pt-8 lg:pt-5 px-2 sm:px-5 pb-4 sm:pb-5">
+        <div className="mx-auto w-full flex flex-wrap justify-between pl-10 pr-10">
+          <div className="flex flex-row gap-5 items-center">
+            <img
+              src="/images/logo.png"
+              alt="Weather App"
+              className="w-[16px] h-[16px] sm:w-[16px]"
+            />
+            <h1 className="font-bold text-xl">Weather App</h1>
+          </div>
+          
           <div className="flex items-center">
-            <h4 className="font-bold mr-3 sm:mr-5 text-[16px] sm:text-[18px]">°C</h4>
+            <UnitToggle isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
             <img
               src="/images/thermo.png"
               className="mr-0 sm:mr-5 w-[20px] sm:w-[25px] h-[20px] sm:h-[25px]"
@@ -40,9 +47,9 @@ export default function Home() {
       <div className="pt-6 sm:pt-8 lg:pt-10 px-2 sm:px-6 md:px-8 lg:px-2 pb-12 sm:pb-16 lg:pb-20 flex flex-col gap-4 sm:gap-6 mx-auto max-w-6xl w-full">
         <SearchBar onCitySelect={setSelectedCity} />
 
-        {selectedCity&& <StatCard cityName={selectedCity} />}
+        {selectedCity&& <StatCard cityName={selectedCity} isCelsius={isCelsius} />}
 
-        {selectedCity&& <ForecastTable cityName={selectedCity} />}
+        {selectedCity&& <ForecastTable cityName={selectedCity} isCelsius={isCelsius}/>}
       </div>
 
       {/* Footer */}

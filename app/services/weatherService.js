@@ -19,8 +19,11 @@ export async function fetchWeather(city, days = 5) {
 
     const forecast = data.forecast.forecastday.map(day => ({
       date: day.date,
-      minTemp: day.day.mintemp_c,
-      maxTemp: day.day.maxtemp_c,
+      minTempC: day.day.mintemp_c,
+      minTempF: day.day.mintemp_f,
+      maxTempC: day.day.maxtemp_c,
+      maxTempF: day.day.maxtemp_f,
+
       weather: {
         description: day.day.condition.text,
         icon: day.day.condition.icon,
@@ -28,10 +31,13 @@ export async function fetchWeather(city, days = 5) {
     }));
 
     const current = {
-      temp: data.current.temp_c,
+      tempC: data.current.temp_c,
+      tempF: data.current.temp_f,
       humidity: data.current.humidity,
       wind: data.current.wind_kph,
-      feels_like: data.current.feelslike_c,
+      feels_like_C: data.current.feelslike_c,
+      feels_like_F: data.current.feelslike_f,
+
       weather: {
         description: data.current.condition.text,
         icon: data.current.condition.icon,
