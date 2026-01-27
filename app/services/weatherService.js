@@ -11,7 +11,7 @@ export async function fetchWeather(city, days = 5) {
     if (!res.ok) {
       const errorData = await res.json().catch(() => ({}));
       console.error('Error response:', errorData);
-      throw new Error(`Failed to fetch weather data: ${res.status} - ${errorData.error || 'Unknown error'}`);
+      throw new Error(`Failed to fetch weather data: ${res.status} - ${errorData.error}`);
     }
 
     const data = await res.json();

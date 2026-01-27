@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import ForecastRow from "./ForecastRow";
 import ForecastTableSkeleton from "./ForecastTableSkeleton";
 import { fetchWeather } from "../services/weatherService";
-import Lottie  from "lottie-react";
-import notFoundAnim from '../../public/lottieAnimation/data.json'
-
 
 export default function ForecastTable({ cityName, isCelsius }) {
   const [forecastData, setForecastData] = useState([]);
@@ -22,7 +19,7 @@ export default function ForecastTable({ cityName, isCelsius }) {
       setForecastData(forecast);
     } catch (err) {
       console.error(err);
-      setError(err.message || "Unable to fetch forecast");
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -33,12 +30,6 @@ export default function ForecastTable({ cityName, isCelsius }) {
 
   if (loading) return <ForecastTableSkeleton />;
   if (error) return <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] overflow-hiddenn">
-    {/* <Lottie
-      animationData={notFoundAnim}
-      loop
-      autoplay
-      className="absolute w-full h-full opacity-70"
-    /> */}
     <h2 className="text-center font-bold text-lg sm:text-xl md:text-2xl text-amber-100 px-4">Please Try Again</h2>
   </div>
 

@@ -6,7 +6,7 @@ export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
     const city = searchParams.get("city");
-    const days = searchParams.get("days") || 7;
+    const days = searchParams.get("days");
 
     if (!city) {
       return NextResponse.json({ error: "City is required" }, { status: 400 });
@@ -22,7 +22,7 @@ export async function GET(request) {
     return NextResponse.json(data);
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ error: err.message || "Server error" }, { status: 500 });
+    return NextResponse.json({ error: err.message}, { status: 500 });
   }
 }
 
