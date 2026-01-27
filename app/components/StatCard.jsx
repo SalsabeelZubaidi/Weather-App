@@ -44,7 +44,7 @@ export default function StatCard({ cityName, isCelsius }) {
         loop
         className="absolute inset-0 w-full h-full opacity-70 "
       />
-      <p className="relative z-10 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-amber-50 px-4">
+      <p className="relative z-10 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl text-amber-50 px-4">
         What's the weather like today?
         <br />
         Type a city to find out!
