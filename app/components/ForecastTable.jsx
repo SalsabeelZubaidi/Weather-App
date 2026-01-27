@@ -32,14 +32,14 @@ export default function ForecastTable({ cityName, isCelsius }) {
 
 
   if (loading) return <ForecastTableSkeleton />;
-  if (error) return <div className="relative w-full h-[450px] overflow-hiddenn">
+  if (error) return <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] overflow-hiddenn">
     {/* <Lottie
       animationData={notFoundAnim}
       loop
       autoplay
       className="absolute w-full h-full opacity-70"
     /> */}
-    <h2 className="text-center font-bold text-2xl text-amber-100">Please Try Again</h2>
+    <h2 className="text-center font-bold text-lg sm:text-xl md:text-2xl text-amber-100 px-4">Please Try Again</h2>
   </div>
 
   if (!cityName) return (
@@ -53,14 +53,14 @@ export default function ForecastTable({ cityName, isCelsius }) {
  
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-2xl font-bold mt-10 mb-4 text-[30px]">5-Day Forecast</h3>
+      <h3 className="text-xl sm:text-2xl md:text-[30px] font-bold mt-6 sm:mt-8 md:mt-10 mb-3 sm:mb-4">5-Day Forecast</h3>
       <table className="w-full table-fixed rounded-xl overflow-hidden">
         <thead className="bg-[#1C2129]">
           <tr>
-            <td className="p-4">Day</td>
-            <td className="p-4">High / Low</td>
-            <td className="p-4">Condition</td>
-            <td className="p-4 hidden sm:table-cell"> </td>
+            <td className="p-3 sm:p-3 md:p-4 text-sm sm:text-base">Day</td>
+            <td className="p-3 sm:p-3 md:p-4 text-sm sm:text-base">High / Low</td>
+            <td className="p-3 sm:p-3 md:p-4 text-sm sm:text-base">Condition</td>
+            <td className="p-3 sm:p-3 md:p-4 hidden sm:table-cell"> </td>
           </tr>
         </thead>
         <tbody>

@@ -38,14 +38,14 @@ export default function StatCard({ cityName, isCelsius }) {
   
   if (!cityName || cityName.trim() === "") {
   return (
-    <div className="relative w-full h-[450px] flex items-center justify-center mt-[-40px]">
+    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] flex items-center justify-center mt-[-20px] sm:mt-[-30px] md:mt-[-40px]">
       <Lottie
         animationData={LandingPageAnim}
         loop
         className="absolute inset-0 w-full h-full opacity-70 "
       />
-      <p className="relative z-10 text-center font-bold text-5xl text-amber-50">
-        What’s the weather like today?
+      <p className="relative z-10 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-amber-50 px-4">
+        What's the weather like today?
         <br />
         Type a city to find out!
       </p>
@@ -55,12 +55,12 @@ export default function StatCard({ cityName, isCelsius }) {
 
   if (loading) return <StatCardSkeleton />;
   if (error) return (
-    <h1 className="text-center mt-40 font-bold text-5xl">
+    <h1 className="text-center mt-20 sm:mt-32 md:mt-40 font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl px-4">
       CITY NOT FOUND
     </h1>
   );
   if (!weatherData) return (
-    <p className="text-center mt-20 font-bold text-3xl">
+    <p className="text-center mt-10 sm:mt-16 md:mt-20 font-bold text-xl sm:text-2xl md:text-3xl px-4">
       No data available for this city.
     </p>
   );
@@ -90,13 +90,13 @@ export default function StatCard({ cityName, isCelsius }) {
         </h1>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-8 sm:pb-12 gap-4 sm:gap-10">
+      <div className="flex flex-col sm:flex-row justify-center items-center px-4 pb-6 sm:pb-8 md:pb-12 gap-3 sm:gap-6 md:gap-10">
         <img
           src={weatherData?.weather?.icon}
-          className="w-12 h-12 sm:w-auto sm:h-auto"
+          className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 lg:w-auto lg:h-auto"
           alt={weatherData?.weather?.description}
         />
-        <span className="text-lg sm:text-xl md:text-[24px] text-center">
+        <span className="text-base sm:text-lg md:text-xl lg:text-[24px] text-center">
           {weatherData?.weather?.description} with a temperature of {isCelsius? Math.round(weatherData?.tempC) : Math.round(weatherData?.tempF)}{unit}
         </span>
       </div>

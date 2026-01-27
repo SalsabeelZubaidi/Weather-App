@@ -6,16 +6,16 @@ export default function ForecastTableSkeleton() {
         <table className="w-full table-fixed">
           <thead className="bg-[#1C2129]">
             <tr>
-              <td className="p-4">
+              <td className="p-3 sm:p-3 md:p-4">
                 <div className="h-4 w-16 bg-gray-600 rounded" />
               </td>
-              <td className="p-4">
+              <td className="p-3 sm:p-3 md:p-4">
                 <div className="h-4 w-24 bg-gray-600 rounded" />
               </td>
-              <td className="p-4">
+              <td className="p-3 sm:p-3 md:p-4">
                 <div className="h-4 w-20 bg-gray-600 rounded" />
               </td>
-              <td className="p-4 hidden sm:table-cell">
+              <td className="p-3 sm:p-3 md:p-4 hidden sm:table-cell">
                 <div className="h-4 w-10 bg-gray-600 rounded" />
               </td>
             </tr>
@@ -24,16 +24,16 @@ export default function ForecastTableSkeleton() {
           <tbody>
             {Array.from({ length: 5 }).map((_, i) => (
               <tr key={i} className="border-t">
-                <td className="p-4">
+                <td className="p-3 sm:p-3 md:p-4">
                   <div className="h-4 w-20 bg-gray-300 rounded" />
                 </td>
-                <td className="p-4">
+                <td className="p-3 sm:p-3 md:p-4">
                   <div className="h-4 w-28 bg-gray-300 rounded" />
                 </td>
-                <td className="p-4">
+                <td className="p-3 sm:p-3 md:p-4">
                   <div className="h-4 w-24 bg-gray-300 rounded" />
                 </td>
-                <td className="p-4 hidden sm:table-cell">
+                <td className="p-3 sm:p-3 md:p-4 hidden sm:table-cell">
                   <div className="h-4 w-10 bg-gray-300 rounded" />
                 </td>
               </tr>

@@ -21,14 +21,14 @@ export default function Home() {
     <>
       {/* Header */}
       <div className="sm:pt-8 lg:pt-5 px-2 sm:px-5 pb-4 sm:pb-5">
-        <div className="mx-auto w-full flex flex-wrap justify-between pl-10 pr-10">
-          <div className="flex flex-row gap-5 items-center">
+        <div className="mx-auto w-full flex flex-wrap justify-between pl-4 sm:pl-6 md:pl-8 lg:pl-10 pr-4 sm:pr-6 md:pr-8 lg:pr-10">
+          <div className="flex flex-row gap-3 sm:gap-4 md:gap-5 items-center">
             <img
               src="/images/logo.png"
               alt="Weather App"
               className="w-[16px] h-[16px] sm:w-[16px]"
             />
-            <h1 className="font-bold text-xl">Weather App</h1>
+            <h1 className="font-bold text-lg sm:text-xl md:text-2xl">Weather App</h1>
           </div>
           
           <div className="flex items-center">
