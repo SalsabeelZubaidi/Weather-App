@@ -18,18 +18,18 @@ export default function SearchBar({ onCitySelect }) {
   };
   
   return (
-    <div className="flex items-center bg-[#26303B] rounded-2xl h-[60px] sm:h-[72px] px-4 sm:px-8 w-full">
+    <div className="flex items-center bg-[#26303B] rounded-2xl h-12 sm:h-16 px-3 sm:px-6 w-full">
       <button className="cursor-pointer" onClick={handleSearch}>
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          className="mr-3 sm:mr-5 text-[#99ABBD] text-lg sm:text-xl"
+          className="mr-3 sm:mr-4 text-[#99ABBD] text-lg sm:text-xl"
         />
       </button>
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-        className="text-[16px] sm:text-[19px] text-[#99ABBD] w-full p-3 rounded-2xl"
+        className="text-base sm:text-lg text-[#99ABBD] w-full py-2 px-2 rounded-2xl bg-transparent outline-none placeholder:text-[#99ABBD]/70"
         placeholder="Search for a city"
       />
     </div>
