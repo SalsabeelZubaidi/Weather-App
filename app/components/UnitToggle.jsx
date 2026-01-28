@@ -4,7 +4,7 @@ export default function UnitToggle({ isCelsius, setIsCelsius }) {
       <button
         onClick={() => setIsCelsius(true)}
         className={`cursor-pointer ${
-          isCelsius ? "font-bold text-lg sm:text-xl text-yellow-300" : "opacity-30"
+          isCelsius ? "font-bold text-sm lg:text-xl  text-amber-100" : "opacity-30"
         }`}
       >
         °C
@@ -13,7 +13,7 @@ export default function UnitToggle({ isCelsius, setIsCelsius }) {
       <button
         onClick={() => setIsCelsius(false)}
         className={`cursor-pointer ${
-          !isCelsius ? "font-bold text-lg sm:text-xl text-yellow-300" : "opacity-30"
+          !isCelsius ? "font-bold text-sm lg:text-xl  text-amber-100" : "opacity-30"
         }`}
       >
         °F

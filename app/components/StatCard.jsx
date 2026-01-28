@@ -38,13 +38,13 @@ export default function StatCard({ cityName, isCelsius }) {
   
   if (!cityName || cityName.trim() === "") {
   return (
-    <div className="relative w-full h-[300px] sm:h-[400px] md:h-[450px] flex items-center justify-center mt-[-20px] sm:mt-[-30px] md:mt-[-40px]">
+    <div className="relative w-full h-[290px] sm:h-[400px] md:h-[450px] flex items-center justify-center mt-[-20px] sm:mt-[-30px] md:mt-[-40px]">
       <Lottie
         animationData={LandingPageAnim}
         loop
         className="absolute inset-0 w-full h-full opacity-70 "
       />
-      <p className="relative z-10 text-center font-bold text-2xl sm:text-3xl md:text-4xl lg:text-4xl text-amber-50 px-4">
+      <p className="text-xl lg:text-2xl relative z-10 text-center font-bold sm:text-sm md:text-3xl lg:text-4xl text-amber-50 px-4">
         What's the weather like today?
         <br />
         Type a city to find out!
