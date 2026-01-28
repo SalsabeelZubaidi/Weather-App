@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header */}
-      <div className="pt-4 sm:pt-6 lg:pt-8 px-4 sm:px-6 lg:px-8 pb-2 sm:pb-6">
+      <div className="py-3 sm:pt-6 lg:pt-2 px-4 sm:px-6 lg:px-6">
         <div className="mx-auto max-w-9xl w-full flex flex-wrap items-center justify-between gap-3">
           <div className="flex flex-row gap-3 sm:gap-4 items-center">
             <img
@@ -26,7 +26,7 @@ export default function Home() {
               alt="Weather App"
               className="w-4 h-4 sm:w-5 sm:h-5"
             />
-            <h1 className="font-bold text-sm lg:text-lg sm:text-xl md:text-2xl leading-tight">Weather App</h1>
+            <h1 className="font-bold text-sm lg:text-md sm:text-lg md:text-md leading-tight">Weather App</h1>
           </div>
           <div className="flex items-center">
             <UnitToggle isCelsius={isCelsius} setIsCelsius={setIsCelsius} />
